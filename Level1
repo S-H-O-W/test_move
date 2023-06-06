@@ -13,7 +13,7 @@ chrome_driver_path = r'C:\Users\\Desktop\python\chromedriver_win32\chromedriver.
 
 
 chrome_options = Options()
-chrome_options.add_argument('--headless')  # ヘッドレスモードで実行する場合はコメントアウトを外す
+chrome_options.add_argument('--headless') 
 
 
 driver = webdriver.Chrome(service=Service(chrome_driver_path), options=chrome_options)
