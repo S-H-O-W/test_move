@@ -1,0 +1,46 @@
+# test_move
+#テスト自動化_01
+
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.keys import Keys
+
+
+chrome_driver_path = r'C:\Users\\Desktop\python\chromedriver_win32\chromedriver.exe'
+
+
+
+chrome_options = Options()
+chrome_options.add_argument('--headless')  # ヘッドレスモードで実行する場合はコメントアウトを外す
+
+
+driver = webdriver.Chrome(service=Service(chrome_driver_path), options=chrome_options)
+
+
+driver.get('https://hotel.testplanisphere.dev/ja/plans.html')
+
+
+search_box = driver.find_element(By.NAME, 'q')
+search_box.send_keys('今日の天気')
+search_box.send_keys(Keys.ENTER)
+
+
+weather_element = driver.find_element(By.XPATH, "//div[@id='wob_dcp']")
+weather = weather_element.text
+
+
+screenshot_path = 'screenshot.png'
+
+#保存先
+driver.save_screenshot('C:\Users\\Desktop\python\screenshot')
+
+
+# print("今日の天気:", weather)
+
+
+driver.quit()
+
+
+
